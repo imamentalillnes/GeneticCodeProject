@@ -1,0 +1,3 @@
+Genetic code project 
+
+The goal is to in take a set of items for a file (maybe two) and give them to a population of Chromosomes to trial and error figure out how much Value you can take without going over the Weight limit of 10.
