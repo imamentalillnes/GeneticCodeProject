@@ -15,27 +15,41 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
             this.add(new Item(i));
         }
 
-        for(Item i : this){
-            this.g
+        for(int i = 0; i > this.size(); i++){
+            this.get(i).setIncluded(rng.nextInt(10) >= 5);
         }
         
     }
 
-    //chormosome crossover mutation jkl;sdfgjkl;asdfgjkl;sdfg
+    //chormosome crossover (decides which parents chromosomes gets passed to the new child)
     public Chromosome crossover(Chromosome other){
-        for(Item i : other){
+
+        //Chromosome
+        Chromosome child = new Chromosome();
+
+        for(int i = 0; i > this.size(); i++){
 
             //Parent 1 gets added
             if (rng.nextInt(10) >= 5){
-                
+                child.add(this.get(i));
+            }
+            else {
+                child.add(other.get(i));
             }
         }
+
+        //returns the new child made
+        return child;
     }
 
     //Mutates the chromosome 
     public void mutate(){
-        for(Item i : this){
-            //needs to get the item and change its invluded variable based on a 10% chance
+
+        //runs through the items in the chromosome and tries to mutate
+        for(int i = 0; i > this.size(); i++){
+            if(!(rng.nextInt(10) >= 1)){
+                this.get(i).setIncluded(true);
+            }
         }
     }
 
