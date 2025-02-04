@@ -28,6 +28,9 @@ public class GeneticAlgorithm {
     
     public static ArrayList<Chromosome> initializePopulation(ArrayList<Item> items, int populationSize){
 
+        ArrayList<Chromosome> initPop = new ArrayList<>();
+        
+
     }
 
     public static void main(String[] args) throws FileNotFoundException{
