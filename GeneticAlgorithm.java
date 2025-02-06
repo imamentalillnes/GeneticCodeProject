@@ -9,30 +9,40 @@ public class GeneticAlgorithm {
         File fileName = new File(filename);
         Scanner fileRead = new Scanner(fileName);
         ArrayList<Item> items = new ArrayList<Item>();
+        ArrayList<Object> noCommas = new ArrayList<>();
+
+
+        while(fileRead.hasNextLine()){
+            noCommas.add(fileRead.next().replaceAll(",", null));
+        }
+        
 
         //Gets the items and sets them up
         while(fileRead.hasNextLine()){
             String label = "";
             double weight = 0.0;
             int value = 0;
+            int nextNum = 0;
     
-            while(fileRead.hasNext()){
-                if(fileRead.hasNextInt()){
-                    value = fileRead.nextInt();
+            for(int i = 0; i >= noCommas.size(); i++){
+                if((int) noCommas.get(i) >= 0 && nextNum == 1){
+                    value = (int) noCommas.get(i);
                 }
-                else if(fileRead.hasNextDouble()){
-                    weight = fileRead.nextDouble();
+                else if ((double) noCommas.get(i) >= 0.0 && nextNum == 0) {
+                    weight = (double) noCommas.get(i);
                 }
-                else {
-                    label = fileRead.next();
+                else{
+                    label += " " + noCommas.get(i);
                 }
-                
-                
-                
 
-            //combines all the info and adds it to the array list
-            Item a = new Item(label, weight, value);
-            items.add(a);
+                //combines all the info and adds it to the array list
+                if(!label.isEmpty() && weight != 0 && value != 0){
+                    Item a = new Item(label, weight, value);
+                    items.add(a);
+                }
+            }              
+                
+            
         }
 
         //closes file and returns the new arraylist
@@ -50,7 +60,6 @@ public class GeneticAlgorithm {
         }
 
         return initPop;
-
     }
 
     public static void main(String[] args) throws FileNotFoundException{
