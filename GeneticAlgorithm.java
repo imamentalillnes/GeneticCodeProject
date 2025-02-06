@@ -9,39 +9,47 @@ public class GeneticAlgorithm {
         File fileName = new File(filename);
         Scanner fileRead = new Scanner(fileName);
         ArrayList<Item> items = new ArrayList<Item>();
-        ArrayList<Object> noCommas = new ArrayList<>();
-
-
-        while(fileRead.hasNextLine()){
-            noCommas.add(fileRead.next().replaceAll(",", null));
-        }
+        ArrayList<String> allItemInfo = new ArrayList<>();  
+        String label = "";
+        double weight = 0.0;
+        int value = 0;
+        int nextNum = 0;
         
+        //collects all the items seperated by spaces from the file
+        while(fileRead.hasNext()){
+            allItemInfo.add(fileRead.next().replace(",", ""));
+        }
 
         //Gets the items and sets them up
-        while(fileRead.hasNextLine()){
-            String label = "";
-            double weight = 0.0;
-            int value = 0;
-            int nextNum = 0;
-    
-            for(int i = 0; i >= noCommas.size(); i++){
-                if((int) noCommas.get(i) >= 0 && nextNum == 1){
-                    value = (int) noCommas.get(i);
-                }
-                else if ((double) noCommas.get(i) >= 0.0 && nextNum == 0) {
-                    weight = (double) noCommas.get(i);
-                }
-                else{
-                    label += " " + noCommas.get(i);
-                }
+        for(int i = 0; i < allItemInfo.size(); i++){
 
-                //combines all the info and adds it to the array list
-                if(!label.isEmpty() && weight != 0 && value != 0){
-                    Item a = new Item(label, weight, value);
-                    items.add(a);
+            try{
+                if (Double.parseDouble(allItemInfo.get(i)) > 0 && nextNum == 0) {
+                    weight = Double.parseDouble(allItemInfo.get(i));
+                    nextNum++;
                 }
-            }              
-                
+                else if(Integer.parseInt(allItemInfo.get(i)) > 0 && nextNum == 1){
+                    value = Integer.parseInt(allItemInfo.get(i));
+                }
+            }
+            catch(NumberFormatException nfe){
+                label += " " + allItemInfo.get(i);
+            }
+
+            //combines all the info and adds it to the array list
+            if(!label.isEmpty() && weight != 0 && value != 0){
+                Item a = new Item(label, weight, value);
+                items.add(a);
+                label = "";
+                value = 0;
+                weight = 0;
+                nextNum = 0;
+            }                          
+            
+        }
+
+        for (Item test : items) {
+            System.out.println(test);
             
         }
 
