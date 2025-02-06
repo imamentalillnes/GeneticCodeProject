@@ -48,11 +48,6 @@ public class GeneticAlgorithm {
             
         }
 
-        for (Item test : items) {
-            System.out.println(test);
-            
-        }
-
         //closes file and returns the new arraylist
         fileRead.close();
         return items;
