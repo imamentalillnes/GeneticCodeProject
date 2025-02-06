@@ -6,14 +6,29 @@ public class GeneticAlgorithm {
     public static ArrayList<Item> readData(String filename) throws FileNotFoundException{
 
         //varables
-        Scanner fileRead = new Scanner(filename);
+        File fileName = new File(filename);
+        Scanner fileRead = new Scanner(fileName);
         ArrayList<Item> items = new ArrayList<Item>();
 
         //Gets the items and sets them up
         while(fileRead.hasNextLine()){
-            String label = fileRead.next();
-            double weight = fileRead.nextDouble();
-            int value = fileRead.nextInt();
+            String label = "";
+            double weight = 0.0;
+            int value = 0;
+    
+            while(fileRead.hasNext()){
+                if(fileRead.hasNextInt()){
+                    value = fileRead.nextInt();
+                }
+                else if(fileRead.hasNextDouble()){
+                    weight = fileRead.nextDouble();
+                }
+                else {
+                    label = fileRead.next();
+                }
+                
+                
+                
 
             //combines all the info and adds it to the array list
             Item a = new Item(label, weight, value);
