@@ -44,7 +44,7 @@ public class GeneticAlgorithm {
                 value = 0;
                 weight = 0;
                 nextNum = 0;
-            }                          
+            }     
             
         }
 
@@ -78,7 +78,7 @@ public class GeneticAlgorithm {
             Collections.shuffle(nextGen);
 
             //runs the crossover method on the current population
-            for(int i = 0; i <= curGen.size(); i =+ 2){
+            for(int i = 0; i < curGen.size(); i += 2){
                 nextGen.add(nextGen.get(i).crossover(nextGen.get(i+1)));
             }
 
@@ -90,6 +90,11 @@ public class GeneticAlgorithm {
             //sorts the chromosomes by the most fit
             for(int i = 0; i < nextGen.size(); i++){
                 nextGen.get(i).compareTo(nextGen.get(+1));
+            }
+
+            for(int test = 0; test < nextGen.size(); test++){
+                System.out.println(nextGen.toString());
+                System.out.println();
             }
 
             //clears the curgen list

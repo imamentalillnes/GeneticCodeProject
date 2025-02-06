@@ -99,7 +99,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
 
     //prints out all the items and returns the fitness value
     public String toString(){
-        for(int i =0; i > this.size(); i++){
+        for(int i =0; i < this.size(); i++){
             if(this.get(i).isIncluded() == true){
                 System.out.println(this.get(i).toString());
             }

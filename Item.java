@@ -18,8 +18,8 @@ public class Item {
     public Item(Item a){
         this.weight = a.getWeight();
         this.value = a.getValue();
-        name = "";
-        included = false;
+        this.name = a.name;
+        this.included = a.included;
     }
     
     //get methods
@@ -41,7 +41,7 @@ public class Item {
     }
 
     public String toString(){
-        return name + "(" + weight + " lbs, $" + value + ")"; 
+        return " " + name + "(" + weight + " lbs, $" + value + ")"; 
     }
 
 }
