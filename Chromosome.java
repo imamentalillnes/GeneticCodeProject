@@ -3,7 +3,7 @@ import java.util.*;
 public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome> {
 
     //used for random number generator
-    private static Random rng;
+    private static Random rng = new Random();
 
     //no arg constructure 
     public Chromosome(){
@@ -15,7 +15,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
             this.add(new Item(i));
         }
 
-        for(int i = 0; i > this.size(); i++){
+        for(int i = 0; i < this.size(); i++){
             this.get(i).setIncluded(rng.nextInt(10) >= 5);
         }
         
@@ -27,7 +27,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
         //Chromosome
         Chromosome child = new Chromosome();
 
-        for(int i = 0; i > this.size(); i++){
+        for(int i = 0; i < this.size(); i++){
 
             //Parent 1 gets added
             if (rng.nextInt(10) >= 5){
@@ -46,7 +46,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     public void mutate(){
 
         //runs through the items in the chromosome and tries to mutate
-        for(int i = 0; i > this.size(); i++){
+        for(int i = 0; i < this.size(); i++){
 
             //rng to decide
             if(!(rng.nextInt(10) >= 1)){
@@ -70,7 +70,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
         int totalValue = 0;
 
         //gets weight and value and adds them to temporary vars
-        for(int i = 0; i > this.size(); i++){
+        for(int i = 0; i < this.size(); i++){
             itemWeight =+ this.get(i).getWeight();
             totalValue =+ this.get(i).getValue();
         }

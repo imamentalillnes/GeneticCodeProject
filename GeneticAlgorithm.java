@@ -58,7 +58,7 @@ public class GeneticAlgorithm {
         //varables
         ArrayList<Chromosome> initPop = new ArrayList<>(populationSize);
         
-        for(int i = 0; i >= initPop.size(); i++){
+        for(int i = 0; i < populationSize; i++){
             initPop.add(new Chromosome(items));
         }
 
@@ -73,22 +73,22 @@ public class GeneticAlgorithm {
         ArrayList<Chromosome> curGen = initializePopulation(Items, 10);
         ArrayList<Chromosome> nextGen = new ArrayList<>(curGen);
 
-        for(int cycle = 0; cycle >= 20; cycle++){
+        for(int cycle = 0; cycle < 20; cycle++){
             //Shuffles the list so random parents are paired off
             Collections.shuffle(nextGen);
 
             //runs the crossover method on the current population
-            for(int i = 0; i >= nextGen.size(); i =+ 2){
+            for(int i = 0; i <= curGen.size(); i =+ 2){
                 nextGen.add(nextGen.get(i).crossover(nextGen.get(i+1)));
             }
 
             //mutates 10% of the genetics in the population
-            for(int i = 0; i >= nextGen.size(); i++){
+            for(int i = 0; i < nextGen.size(); i++){
                 nextGen.get(i).mutate();
             }
 
             //sorts the chromosomes by the most fit
-            for(int i = 0; i >= nextGen.size(); i++){
+            for(int i = 0; i < nextGen.size(); i++){
                 nextGen.get(i).compareTo(nextGen.get(+1));
             }
 
