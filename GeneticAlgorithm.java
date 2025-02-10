@@ -71,9 +71,12 @@ public class GeneticAlgorithm {
         String inputItems = "items.txt";
         ArrayList<Item> Items = readData(inputItems);
         ArrayList<Chromosome> curGen = initializePopulation(Items, 10);
-        ArrayList<Chromosome> nextGen = new ArrayList<>(curGen);
 
         for(int cycle = 0; cycle < 20; cycle++){
+
+            //Makes the nextGen array 
+            ArrayList<Chromosome> nextGen = new ArrayList<>(curGen);
+
             //Shuffles the list so random parents are paired off
             Collections.shuffle(nextGen);
 
@@ -89,24 +92,20 @@ public class GeneticAlgorithm {
 
             //sorts the chromosomes by the most fit
             for(int i = 0; i < nextGen.size(); i++){
-                nextGen.get(i).compareTo(nextGen.get(+1));
-            }
-
-            for(int test = 0; test < nextGen.size(); test++){
-                System.out.println(nextGen.toString());
-                System.out.println();
+                Collections.sort(nextGen);
             }
 
             //clears the curgen list
             curGen.clear();
 
             //adds the 10 ten into the curGen lost
-            for(int i = 0; i > 10; i++){
-                curGen.add(nextGen.get(i));
+            for(int i = 0; i < 10; i++){
+                curGen.add(new Chromosome(nextGen.get(i)));
             }
         }
-        for (int i = 0; i >= curGen.size(); i++){
+        for (int i = 0; i < curGen.size(); i++){
             System.out.println(curGen.get(i));
+            System.out.println();
         }
     }
 }

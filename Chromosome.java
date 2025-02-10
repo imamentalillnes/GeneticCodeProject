@@ -71,8 +71,10 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
 
         //gets weight and value and adds them to temporary vars
         for(int i = 0; i < this.size(); i++){
-            itemWeight =+ this.get(i).getWeight();
-            totalValue =+ this.get(i).getValue();
+            if(this.get(i).isIncluded() == true){
+                itemWeight += this.get(i).getWeight();
+                totalValue += this.get(i).getValue();
+            }
         }
 
         //checks to make sure that total is above 10 
@@ -104,7 +106,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
                 System.out.println(this.get(i).toString());
             }
         }
-        return "fitness value" + this.getFitness();
+        return "fitness value " + this.getFitness();
     }
 
 }
