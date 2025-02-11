@@ -66,13 +66,13 @@ public class GeneticAlgorithm {
     }
 
     public static void main(String[] args) throws FileNotFoundException{
-        
+
         //Varaiables 
         String inputItems = "items.txt";
         ArrayList<Item> Items = readData(inputItems);
         ArrayList<Chromosome> curGen = initializePopulation(Items, 10);
 
-        for(int cycle = 0; cycle < 40; cycle++){
+        for(int cycle = 0; cycle < 20; cycle++){
 
             //Makes the nextGen array 
             ArrayList<Chromosome> nextGen = new ArrayList<Chromosome>((curGen));
