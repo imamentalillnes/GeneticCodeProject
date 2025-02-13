@@ -103,7 +103,6 @@ public class GeneticAlgorithm {
 
             //adds the top ten chromosomes to the curGen
             curGen = new ArrayList<>(nextGen);
-
         }
         for (int i = 0; i < curGen.size(); i++){
             System.out.println(curGen.get(i));

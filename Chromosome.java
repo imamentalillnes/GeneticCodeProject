@@ -31,10 +31,10 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
 
             //Parent 1 gets added
             if (rng.nextInt(10) >= 5){
-                child.add(this.get(i));
+                child.add(new Item(this.get(i)));
             }
             else {
-                child.add(other.get(i));
+                child.add(new Item(other.get(i)));
             }
         }
 
